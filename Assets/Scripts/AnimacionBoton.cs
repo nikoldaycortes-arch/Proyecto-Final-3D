@@ -1,18 +1,17 @@
-
 using UnityEngine;
 using System.Collections;
 
 public class AnimacionBoton : MonoBehaviour
 {
-    public float altura = 0.2f;
-    public float duracion = 0.25f;
+    public float presion = 0.08f;
+    public float duracion = 0.10f;
 
-    private Vector3 posicionInicial;
+    private Vector3 escalaInicial;
     private bool animando = false;
 
     void Start()
     {
-        posicionInicial = transform.localPosition;
+        escalaInicial = transform.localScale;
     }
 
     public IEnumerator Brinquito()
@@ -21,24 +20,43 @@ public class AnimacionBoton : MonoBehaviour
 
         animando = true;
 
+        Vector3 escalaPresionada = new Vector3(
+            escalaInicial.x * 0.98f,
+            escalaInicial.y * (1f - presion),
+            escalaInicial.z
+        );
+
         float tiempo = 0f;
 
         while (tiempo < duracion)
         {
             tiempo += Time.unscaledDeltaTime;
 
-            float movimiento = Mathf.Sin(
-                (tiempo / duracion) * Mathf.PI
-            ) * altura;
-
-            transform.localPosition =
-                posicionInicial + Vector3.up * movimiento;
+            transform.localScale = Vector3.Lerp(
+                escalaInicial,
+                escalaPresionada,
+                tiempo / duracion
+            );
 
             yield return null;
         }
 
-        transform.localPosition = posicionInicial;
+        tiempo = 0f;
+
+        while (tiempo < duracion)
+        {
+            tiempo += Time.unscaledDeltaTime;
+
+            transform.localScale = Vector3.Lerp(
+                escalaPresionada,
+                escalaInicial,
+                tiempo / duracion
+            );
+
+            yield return null;
+        }
+
+        transform.localScale = escalaInicial;
         animando = false;
     }
 }
-

@@ -185,7 +185,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 51435a2bc2d090549870ea6632931367, type: 2}
+  - {fileID: 2100000, guid: e5833e9dbe4e8124bb5b55f0400a1183, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12c3c1d28ef75e43893cfcde84f7216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimacionBoton
-  altura: 0.4
+  presion: 0.08
   duracion: 0.25
 --- !u!1 &330585543
 GameObject:
@@ -1202,7 +1202,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 51435a2bc2d090549870ea6632931367, type: 2}
+  - {fileID: 2100000, guid: e5833e9dbe4e8124bb5b55f0400a1183, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1261,7 +1261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12c3c1d28ef75e43893cfcde84f7216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimacionBoton
-  altura: 0.4
+  presion: 0.08
   duracion: 0.25
 --- !u!1 &1471367300
 GameObject:
@@ -1329,7 +1329,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 51435a2bc2d090549870ea6632931367, type: 2}
+  - {fileID: 2100000, guid: e5833e9dbe4e8124bb5b55f0400a1183, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1388,7 +1388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12c3c1d28ef75e43893cfcde84f7216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimacionBoton
-  altura: 0.4
+  presion: 0.08
   duracion: 0.25
 --- !u!1 &1821851284
 GameObject:
