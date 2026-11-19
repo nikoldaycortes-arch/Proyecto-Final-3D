@@ -1,0 +1,444 @@
+fileFormatVersion: 2
+guid: 5c6317c7be311d049ac9d5408d9ee5b0
+ModelImporter:
+  serializedVersion: 24501
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh10_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 20ac120f2b53b6845ac44d3c5ed2ab07, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh11_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: fba9a15ad27c55a47afbae1356a97564, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh12_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: eb116990c9b484c4d82118729332fd8a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh13_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: a5a24dce7a5e0654fae3e41274f6f51a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh14_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: c6a835a4f726a2545848b8815fb3404b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh15_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: d5602cae5b1431743bc84e2d276fbf71, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh16_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: a239ba6569f4ea547bbaebe6f0e68998, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh17_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: fa8a0f36cd22c12458fe4b9d712569d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh18_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 90068e2ba639416479ed71f490a78c68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh19_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: b58380f0b95a45e4fa9ab266f50ac79a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh1_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 0411d77290bd8c2488467a55d33a9546, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh20_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 32666a3e0dace9544ae8fd6b35d0a40f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh21_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: cc94cd04a8bacac4d89c01d301d3d85b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh22_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 549872e74f2038f42a62b6d2b09ebc5b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh23_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: ce5cf5d3ec78bb745b51e811b4b56ecd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh24_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 07dc9a17e35c08e41b99043e8fb648ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh25_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 74265d3906c008244987748287d27b3d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh26_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 46b6966e571895c4da14d2110e4fd116, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh27_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: e62aef556c3d2d24aaeda94a92f18466, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh28_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 90b3ad3b99b8d384795d67aab9e12ded, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh29_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 5840656b291be764298d8a9e79c3a4d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh2_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 83c713821bb8e1d408cfa22e19345264, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh30_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 0e253a9b57bb93442b48ff4a9532786e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh31_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 14b24d794ec5fc5469327fd1cbebf226, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh32_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 057a2c5aa6bc12741a85a52441d304b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh33_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 634a5f45baf9853418368a4831f3a1e9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh34_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 807da1b685f30df43b817e87a7318052, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh35_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 61442e5bf22093c4ca5d694ea873a513, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh36_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: c8e1e585b5a6bd34eb911e332f124875, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh37_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 6ed521f574116ae4aaaea11bb1d48bf4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh38_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 4044f06d046f16643852dd7e6fed6d81, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh39_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: d6fefafea6950864bbdb58bd1dc614fa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh3_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 5b652f9f4e08c114e8af9dc169c2a291, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh40_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: d74289412d2d35245858a35359d54cf7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh41_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 37104c1dc78bfae42a95ede8d74f4492, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh42_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: ab5e6e0efcd5d8e46920784b877b7adf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh43_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: b12974d0430136b4295f95ce512786f5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh44_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 1b98c41fe12f1854d81d311d276ca413, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh45_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 3df16b471b6f6254284b857a28b0a241, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh46_Component3_9_1_Component2_9_1_skp2588_1_ModelMat
+    second: {fileID: 2100000, guid: a6efb002813d8a747a56fed8ea86398f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh47_Component3_9_1_Component2_9_1_skp2588_1_ModelMat
+    second: {fileID: 2100000, guid: 7b965acd2c0e7ff4e95e87e7b5efe4ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh48_Component3_9_1_Component2_9_1_skp2588_1_ModelMat
+    second: {fileID: 2100000, guid: 1e59d757efe7a424998bb938b6f42194, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh49_Component5_9_1_Component4_9_1_skp2588_1_ModelMat
+    second: {fileID: 2100000, guid: 7e34c2a1ef845fd41a86c8c67ee3d7bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh4_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 5634eb23760bb0a4bbfde5eea44c662a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh50_Component5_9_1_Component4_9_1_skp2588_1_ModelMat
+    second: {fileID: 2100000, guid: 13fdc34a68c3e5b458adf074e9afc775, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh51_Component5_9_1_Component4_9_1_skp2588_1_ModelMat
+    second: {fileID: 2100000, guid: 9cf4094ca69954d40ac3a4c14c763f08, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh52_Group_5_1_Group1_Hourglass1_ModelMat
+    second: {fileID: 2100000, guid: 1bb8551d348d1214c8b566fdad9b7600, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh53_Group_5_2_Group1_Hourglass1_ModelMat
+    second: {fileID: 2100000, guid: 49e6c53e58bd891419bbed94c1b77e37, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh54_Group_2_1_Hourglass1_ModelMat
+    second: {fileID: 2100000, guid: f0ffb7d04f8d2124c962b0a8bc0730e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh55_Group_8_1_Hourglass1_ModelMat
+    second: {fileID: 2100000, guid: bb015231403caf04c83adbe27ad63b99, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh56_Group2_Group_1_1_Hourglass1_ModelMat
+    second: {fileID: 2100000, guid: b98f00c91d6713947af59b6c3ff20ec8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh57_Group_1_1_Hourglass1_ModelMat
+    second: {fileID: 2100000, guid: 8f14dccf47118fb4791241856a95482f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh58_Group3_Group_1_2_Hourglass1_ModelMat
+    second: {fileID: 2100000, guid: 57b0732a9052a5c48b8407656755ee7c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh59_Group_1_2_Hourglass1_ModelMat
+    second: {fileID: 2100000, guid: 31b8c1fecb6e28f40bdc34af6f998005, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh5_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: de8aa7d734ca2ce41b1d71810447a478, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh60_Group_2_2_Hourglass1_ModelMat
+    second: {fileID: 2100000, guid: cb5920b1380c0ad409ee20ab7126e6ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh61_Group_2_3_Hourglass1_ModelMat
+    second: {fileID: 2100000, guid: 8d8065e85fb642844a9e3a01e60b7e6e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh62_ModelMat
+    second: {fileID: 2100000, guid: 58c9a092be4ceda4a997b3b191cf197f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh63_ModelMat
+    second: {fileID: 2100000, guid: f93d8c4fe93d6d041a0bf7fdebc4ccaa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh64_ModelMat
+    second: {fileID: 2100000, guid: 163d46ace77ddf448a7ab27ba986f7f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh65_ModelMat
+    second: {fileID: 2100000, guid: 3d23683cb39e7e64c80c1185f179abe6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh66_ModelMat
+    second: {fileID: 2100000, guid: bebd632595ec777459f8c90a06e21165, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh6_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 38f4949432af89c47a8a2da0593a4f5d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh7_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: f8420788b647a5d4686512833cf8f4a5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh8_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 256f686fb9586ab4d848b98f732e4005, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh9_Component1_Component_instance_1_warp_room_1_Scene__5335_d6df_8c04_81b8_instance_0_SketchUp_unnamed_G_0be1_d939_332e_538e1_Crash_3_Warp_room1_ModelMat
+    second: {fileID: 2100000, guid: 2269a9b9f484a17469b91830d8615fbd, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+    searchTexturesGlobally: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    generateMeshLods: 0
+    meshLodGenerationFlags: 0
+    maximumMeshLod: -1
+    importUVs: -1
+    importVertexColors: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+    calculateBlendshapeNormalsDeltaFromImportedNormals: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
