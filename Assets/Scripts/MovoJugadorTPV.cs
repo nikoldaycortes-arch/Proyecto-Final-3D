@@ -1,17 +1,6 @@
 using System.Collections;
 using UnityEngine;
 
-/// <summary>
-/// Jugador 3D de plataformas: correr, salto + doble salto, giro de ataque,
-/// pisotón sobre enemigos y muerte con reaparición.
-///
-/// Parámetros del Animator (nómbralos exactamente así):
-///   Float   Velocidad
-///   Bool    EnPiso
-///   Trigger Saltar   (se usa también para el doble salto)
-///   Trigger Girar
-///   Trigger Morir
-/// </summary>
 [RequireComponent(typeof(CharacterController))]
 public class MovoJugadorTPV : MonoBehaviour
 {
@@ -25,6 +14,9 @@ public class MovoJugadorTPV : MonoBehaviour
     [Header("Referencias")]
     [SerializeField] private Camera followCamera;
     [SerializeField] private Animator animator;
+    [SerializeField] private Transform huesoRaizHips;
+    [SerializeField] private Transform brazoIzquierdo;
+    [SerializeField] private Transform brazoDerecho;
 
     [Header("Piso")]
     public Transform checkPiso;
@@ -33,22 +25,25 @@ public class MovoJugadorTPV : MonoBehaviour
     public float gravedad = -25f;
 
     [Header("Salto")]
-    public float salto = 1.6f;                 // altura del primer salto
-    public int saltosMaximos = 2;              // 2 = doble salto
+    public float salto = 1.6f;
+    public int saltosMaximos = 2;
     [Range(0.5f, 1.2f)]
-    public float factorDobleSalto = 0.9f;      // el 2.º salto sube un poco menos
-    public float tiempoCoyote = 0.1f;          // margen para saltar justo al salir del borde
-    public float alturaRebote = 1.0f;          // rebote al pisar un enemigo
+    public float factorDobleSalto = 0.9f;
+    public float tiempoCoyote = 0.1f;
+    public float alturaRebote = 1.0f;
 
     [Header("Giro de ataque")]
     public float duracionGiro = 0.5f;
     public float cooldownGiro = 0.2f;
     public float radioGiro = 1.6f;
     public float alturaCentroGiro = 1f;
+    public float velocidadGiroVisual = 2400f;
+    public Vector3 rotacionBrazoIzquierdo = Vector3.zero;
+    public Vector3 rotacionBrazoDerecho = Vector3.zero;
 
     [Header("Muerte")]
     public float tiempoReaparicion = 2f;
-    public Vector3 puntoReaparicion;           // se llena solo en Start
+    public Vector3 puntoReaparicion;
 
     private Vector3 veloJugador;
     private bool enPiso;
@@ -57,14 +52,33 @@ public class MovoJugadorTPV : MonoBehaviour
     private bool girando;
     private float proximoGiro;
     private bool vivo = true;
+    private float anguloGiroVisual;
 
     public bool EstaVivo => vivo;
 
     private void Start()
     {
         controller = GetComponent<CharacterController>();
-        if (animator == null) animator = GetComponentInChildren<Animator>();
-        if (followCamera == null) followCamera = Camera.main;
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
+        if (followCamera == null)
+        {
+            followCamera = Camera.main;
+        }
+        if (huesoRaizHips == null)
+        {
+            huesoRaizHips = transform.Find("mixamorig:Hips");
+        }
+        if (brazoIzquierdo == null)
+        {
+            brazoIzquierdo = transform.Find("mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm");
+        }
+        if (brazoDerecho == null)
+        {
+            brazoDerecho = transform.Find("mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm");
+        }
         puntoReaparicion = transform.position;
     }
 
@@ -79,16 +93,29 @@ public class MovoJugadorTPV : MonoBehaviour
         ActualizarAnimator();
     }
 
-    // ---------------- MOVIMIENTO ----------------
+    private void LateUpdate()
+    {
+        if (girando && huesoRaizHips != null)
+        {
+            if (brazoIzquierdo != null)
+            {
+                brazoIzquierdo.localRotation = Quaternion.Euler(rotacionBrazoIzquierdo);
+            }
+            if (brazoDerecho != null)
+            {
+                brazoDerecho.localRotation = Quaternion.Euler(rotacionBrazoDerecho);
+            }
+
+            anguloGiroVisual += velocidadGiroVisual * Time.deltaTime;
+            huesoRaizHips.Rotate(transform.up, anguloGiroVisual, Space.World);
+        }
+    }
+
     private void Movimiento()
     {
-        // CAMBIO: ahora también usa isGrounded del CharacterController,
-        // así funciona aunque la Layer o el CheckPiso estén mal configurados.
         enPiso = controller.isGrounded ||
                  (checkPiso != null && Physics.CheckSphere(checkPiso.position, distanciaPiso, piso));
 
-        // Solo cuenta como "aterrizado" si ya no está subiendo.
-        // (Evita que el doble salto se reinicie en el primer frame del salto.)
         if (enPiso && veloJugador.y <= 0f)
         {
             veloJugador.y = -2f;
@@ -99,7 +126,6 @@ public class MovoJugadorTPV : MonoBehaviour
         X = Input.GetAxisRaw("Horizontal");
         Z = Input.GetAxisRaw("Vertical");
 
-        // La dirección es relativa al giro (yaw) de la cámara satélite
         Vector3 moveInput = Quaternion.Euler(0, followCamera.transform.eulerAngles.y, 0) * new Vector3(X, 0, Z);
         Vector3 moveDirection = moveInput.normalized;
 
@@ -114,7 +140,10 @@ public class MovoJugadorTPV : MonoBehaviour
 
     private void Entradas()
     {
-        if (Input.GetButtonDown("Jump")) IntentarSalto();
+        if (Input.GetButtonDown("Jump"))
+        {
+            IntentarSalto();
+        }
 
         if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetMouseButtonDown(0))
             && !girando && Time.time >= proximoGiro)
@@ -129,7 +158,6 @@ public class MovoJugadorTPV : MonoBehaviour
         controller.Move(veloJugador * Time.deltaTime);
     }
 
-    // ---------------- SALTO / DOBLE SALTO ----------------
     private void IntentarSalto()
     {
         bool dentroDeCoyote = Time.time - ultimoTiempoPiso <= tiempoCoyote;
@@ -141,8 +169,10 @@ public class MovoJugadorTPV : MonoBehaviour
         }
         else if (saltosHechos < saltosMaximos)
         {
-            // Si cayó de una plataforma sin saltar, igual solo tiene 1 salto en el aire
-            if (saltosHechos == 0) saltosHechos = 1;
+            if (saltosHechos == 0)
+            {
+                saltosHechos = 1;
+            }
             EjecutarSalto(factorDobleSalto);
             saltosHechos++;
         }
@@ -151,14 +181,20 @@ public class MovoJugadorTPV : MonoBehaviour
     private void EjecutarSalto(float factor)
     {
         veloJugador.y = Mathf.Sqrt(salto * -2f * gravedad) * factor;
-        if (animator != null) animator.SetTrigger("Saltar");
+        if (animator != null)
+        {
+            animator.SetTrigger("Saltar");
+        }
     }
 
-    // ---------------- GIRO DE ATAQUE ----------------
     private IEnumerator Girar()
     {
         girando = true;
-        if (animator != null) animator.SetTrigger("Girar");
+        anguloGiroVisual = 0f;
+        if (animator != null)
+        {
+            animator.SetBool("Girando", true);
+        }
 
         float t = 0f;
         while (t < duracionGiro)
@@ -169,6 +205,11 @@ public class MovoJugadorTPV : MonoBehaviour
         }
 
         girando = false;
+        anguloGiroVisual = 0f;
+        if (animator != null)
+        {
+            animator.SetBool("Girando", false);
+        }
         proximoGiro = Time.time + cooldownGiro;
     }
 
@@ -179,33 +220,44 @@ public class MovoJugadorTPV : MonoBehaviour
         foreach (Collider c in cercanos)
         {
             Enemigo enemigo = c.GetComponentInParent<Enemigo>();
-            if (enemigo != null && enemigo.estaVivo) enemigo.Morir();
+            if (enemigo != null && enemigo.estaVivo)
+            {
+                enemigo.Morir();
+            }
         }
     }
 
-    // ---------------- PISOTÓN SOBRE ENEMIGOS ----------------
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Enemigo enemigo = hit.collider.GetComponentInParent<Enemigo>();
-        if (enemigo == null || !enemigo.estaVivo) return;
+        if (enemigo == null || !enemigo.estaVivo)
+        {
+            return;
+        }
 
-        // Cayendo y golpeando la parte de arriba del enemigo
         if (veloJugador.y <= 0f && hit.normal.y > 0.5f)
         {
             enemigo.Aplastar();
             veloJugador.y = Mathf.Sqrt(alturaRebote * -2f * gravedad);
-            saltosHechos = 1; // tras rebotar conserva el doble salto
+            saltosHechos = 1;
         }
     }
 
-    // ---------------- MUERTE ----------------
     public void Morir()
     {
-        if (!vivo) return;
+        if (!vivo)
+        {
+            return;
+        }
         vivo = false;
         girando = false;
+        anguloGiroVisual = 0f;
         StopAllCoroutines();
-        if (animator != null) animator.SetTrigger("Morir");
+        if (animator != null)
+        {
+            animator.SetBool("Girando", false);
+            animator.SetTrigger("Morir");
+        }
         StartCoroutine(Reaparecer());
     }
 
@@ -223,29 +275,31 @@ public class MovoJugadorTPV : MonoBehaviour
 
         if (animator != null)
         {
-            animator.Rebind();      // vuelve al estado inicial (idle/correr)
+            animator.Rebind();
             animator.Update(0f);
         }
     }
 
-    // ---------------- ANIMATOR ----------------
     private void ActualizarAnimator()
     {
-        if (animator == null) return;
+        if (animator == null)
+        {
+            return;
+        }
         animator.SetBool("EnPiso", enPiso);
         animator.SetFloat("Velocidad", vivo ? new Vector2(X, Z).magnitude : 0f);
     }
 
-    // ---------------- GIZMOS (ayuda visual en la Scene) ----------------
-    // Verde: esfera del CheckPiso (debe tocar el suelo).
     private void OnDrawGizmos()
     {
-        if (checkPiso == null) return;
+        if (checkPiso == null)
+        {
+            return;
+        }
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(checkPiso.position, distanciaPiso);
     }
 
-    // Rojo: radio del giro de ataque (solo al seleccionar el jugador).
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
