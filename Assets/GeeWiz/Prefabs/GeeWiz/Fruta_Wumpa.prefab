@@ -1,0 +1,150 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8632966545772190505
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4587869249458470155}
+  - component: {fileID: 6739724522155563893}
+  - component: {fileID: 8055714344598838740}
+  m_Layer: 0
+  m_Name: Fruta_Wumpa
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4587869249458470155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8632966545772190505}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1819704111019218481}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &6739724522155563893
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8632966545772190505}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.55
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8055714344598838740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8632966545772190505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95ed7709aba7bf91212cb133cd0efc13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FrutaWumpa
+  esRelojTimeTrial: 0
+  esGema: 0
+  esCristal: 0
+  valorWumpa: 1
+  velocidadRotacion: 90
+  radioIman: 3.2
+  vfxRecoger: {fileID: 9157105887711914197, guid: 7059f390c67e2ee1d0dc60b3f5570b8b, type: 3}
+--- !u!1001 &2218685006268805594
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4587869249458470155}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 69f89987c66ba345ed9ede5248c8a431, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8.8571415
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 69f89987c66ba345ed9ede5248c8a431, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8.857143
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 69f89987c66ba345ed9ede5248c8a431, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 8.857143
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 69f89987c66ba345ed9ede5248c8a431, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.19998652
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 69f89987c66ba345ed9ede5248c8a431, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25179154
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 69f89987c66ba345ed9ede5248c8a431, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.049190372
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 69f89987c66ba345ed9ede5248c8a431, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.025944019
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 69f89987c66ba345ed9ede5248c8a431, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.11361551
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 69f89987c66ba345ed9ede5248c8a431, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.71499497
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 69f89987c66ba345ed9ede5248c8a431, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.689348
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 69f89987c66ba345ed9ede5248c8a431, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 69f89987c66ba345ed9ede5248c8a431, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 69f89987c66ba345ed9ede5248c8a431, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 69f89987c66ba345ed9ede5248c8a431, type: 3}
+      propertyPath: m_Name
+      value: Modelo_Wumpa
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 69f89987c66ba345ed9ede5248c8a431, type: 3}
+--- !u!4 &1819704111019218481 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 69f89987c66ba345ed9ede5248c8a431, type: 3}
+  m_PrefabInstance: {fileID: 2218685006268805594}
+  m_PrefabAsset: {fileID: 0}
