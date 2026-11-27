@@ -6,7 +6,6 @@ namespace GeeWiz
 {
     public class MovoJugadorTPV : MonoBehaviour
     {
-        //Controlador de movimiento
         private CharacterController controller;
 
         public float veloMovi = 2f;
@@ -14,11 +13,9 @@ namespace GeeWiz
 
         public float X, Z;
 
-        //Camara para seguir al personaje
         [SerializeField]
         private Camera followCamera;
 
-        //Variables para movimiento y validacion salto
         private Vector3 veloJugador;
         public Transform checkPiso;
         public float distanciaPiso = 0.4f;
@@ -30,7 +27,7 @@ namespace GeeWiz
         public float alturaCaida = -10f;
         private Vector3 puntoInicio;
 
-        bool enPiso;
+        private bool enPiso;
 
         [Header("Correr y Salto Avanzado")]
         public float multiplicadorCorrer = 1.65f;
@@ -41,7 +38,6 @@ namespace GeeWiz
         [Header("Gravedad Personalizada y Planchazo")]
         public float radioPlanchazo = 2.2f;
         public GameObject vfxPlanchazo;
-        //Se queda un instante en el aire y luego la gravedad crece en curva hasta el multiplicador final
         public float suspensionPlanchazo = 0.12f;
         public float gravedadPlanchazoInicial = 2f;
         public float gravedadPlanchazoFinal = 14f;
@@ -62,7 +58,6 @@ namespace GeeWiz
         [Header("Animacion y VFX")]
         public Animator animator;
         public GameObject vfxPolvoSalto;
-        //Velocidad a la que los pies del clip de correr no patinan
         public float velocidadNaturalCarrera = 3.5f;
 
         [Header("Aku Aku")]
@@ -121,6 +116,11 @@ namespace GeeWiz
 
         private void Update()
         {
+            if (SistemaVidas.instancia != null && SistemaVidas.instancia.SinVidas)
+            {
+                return;
+            }
+
             if (GestorJuego.Instancia != null && (GestorJuego.Instancia.juegoPausado || GestorJuego.Instancia.juegoTerminado))
             {
                 return;
@@ -149,23 +149,26 @@ namespace GeeWiz
                 {
                     Teletransportar(puntoEntradaBonus);
                 }
-                else if (GestorJuego.Instancia != null)
+                else
                 {
-                    GestorJuego.Instancia.RestarVida();
-                    if (GestorJuego.Instancia.juegoTerminado)
+                    SistemaVidas.instancia?.DescontarVida();
+                    GestorJuego.Instancia?.RestarVida();
+
+                    bool sinVidas = (SistemaVidas.instancia != null && SistemaVidas.instancia.SinVidas)
+                                    || (GestorJuego.Instancia != null && GestorJuego.Instancia.juegoTerminado);
+
+                    if (sinVidas)
                     {
-                        //Para que la animacion de muerte se vea aunque el juego se pause
-                        if (animator != null) animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+                        if (animator != null)
+                        {
+                            animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+                        }
                         DispararTriggerAnimator("Morir");
                     }
                     else
                     {
                         Reaparecer();
                     }
-                }
-                else
-                {
-                    Reaparecer();
                 }
             }
         }
@@ -174,7 +177,6 @@ namespace GeeWiz
         {
             Vector3 dirArriba = -direccionGravedad.normalized;
 
-            //Chequeo de que se esta en contacto con el piso para el salto
             if (checkPiso != null)
             {
                 enPiso = Physics.CheckSphere(checkPiso.position, distanciaPiso, piso);
@@ -198,7 +200,6 @@ namespace GeeWiz
 
                 if (Vector3.Dot(veloJugador, dirArriba) < 0f)
                 {
-                    //Valor para que el salto sea un poco mas realista
                     veloJugador = -dirArriba * 2f;
                 }
             }
@@ -210,11 +211,7 @@ namespace GeeWiz
 
             float yawCamara = followCamera != null ? followCamera.transform.eulerAngles.y : transform.eulerAngles.y;
 
-            //Usamos los angulos de euler para optimizar el giro en el eje Y
-            //lo multiplicamos por el movimiento del personaje, para asi crear un solo vector de movimiento
             Vector3 moveInput = Quaternion.Euler(0, yawCamara, 0) * new Vector3(X, 0, Z);
-
-            //Normalizamos el vector direccion (es decir, que sea un vector unidad)
             Vector3 moveDirection = moveInput.sqrMagnitude > 1f ? moveInput.normalized : moveInput;
 
             bool corriendo = Input.GetKey(KeyCode.LeftShift);
@@ -224,16 +221,11 @@ namespace GeeWiz
                 moveDirection = Vector3.zero;
             }
 
-            //le damos movimiento al personaje con el vector direccion y la velocidad de movimiento dada
             controller.Move(moveDirection * velocidadActual * Time.deltaTime);
 
-            //Para optimizar el movimiento del personaje usamos la funcion LookRotation de el Quaternion
-            //para que siempre el personaje este mirando hacia adelante, donde apunta la camara
             if (moveDirection.sqrMagnitude > 0.001f)
             {
                 Quaternion rotacion = Quaternion.LookRotation(moveDirection.normalized, Vector3.up);
-
-                //Slerp para generar el movimiento suavizado entre las rotaciones de camara y personaje
                 transform.rotation = Quaternion.Slerp(transform.rotation, rotacion, veloRota * Time.deltaTime);
             }
 
@@ -241,7 +233,6 @@ namespace GeeWiz
             if (Input.GetButtonDown("Jump") && (puedePrimerSalto || saltosHechos < saltosMaximos))
             {
                 haciendoPlanchazo = false;
-                //Si cae sin saltar ya solo le queda un salto en el aire
                 if (!puedePrimerSalto && saltosHechos == 0)
                 {
                     saltosHechos = 1;
@@ -298,8 +289,14 @@ namespace GeeWiz
 
         private void ProcesarLanzamiento()
         {
-            if (!(Input.GetButtonDown("Fire2") || Input.GetKeyDown(KeyCode.F))) return;
-            if (Time.time < proximoLanzamiento) return;
+            if (!(Input.GetButtonDown("Fire2") || Input.GetKeyDown(KeyCode.F)))
+            {
+                return;
+            }
+            if (Time.time < proximoLanzamiento)
+            {
+                return;
+            }
 
             proximoLanzamiento = Time.time + enfriamientoLanzamiento;
             Vector3 origen = puntoLanzamiento != null ? puntoLanzamiento.position : transform.position + transform.forward * 0.9f + Vector3.up * 0.9f;
@@ -312,7 +309,6 @@ namespace GeeWiz
             }
             else
             {
-                //Creamos una esfera si no tiene prefab puesto
                 objProyectil = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 objProyectil.transform.position = origen;
                 objProyectil.transform.localScale = Vector3.one * 0.35f;
@@ -322,7 +318,10 @@ namespace GeeWiz
                     rend.material.color = new Color(1f, 0.45f, 0.05f);
                 }
                 SphereCollider col = objProyectil.GetComponent<SphereCollider>();
-                if (col != null) col.isTrigger = true;
+                if (col != null)
+                {
+                    col.isTrigger = true;
+                }
             }
 
             ProyectilWumpa proyectil = objProyectil.GetComponent<ProyectilWumpa>();
@@ -341,7 +340,10 @@ namespace GeeWiz
 
             foreach (Collider col in impactos)
             {
-                if (col.transform == transform || col.transform.IsChildOf(transform)) continue;
+                if (col.transform == transform || col.transform.IsChildOf(transform))
+                {
+                    continue;
+                }
 
                 IGolpeable golpeable = col.GetComponent<IGolpeable>() ?? col.GetComponentInParent<IGolpeable>();
                 if (golpeable != null && !golpeados.Contains(golpeable))
@@ -353,7 +355,6 @@ namespace GeeWiz
 
             if (animator != null)
             {
-                //Queda aplastado contra el piso y luego rebota a su forma
                 animator.transform.localScale = Vector3.Scale(escalaBaseModelo, new Vector3(1.6f, 1.35f, 0.3f));
                 finAplastado = Time.time + 0.5f;
             }
@@ -422,7 +423,10 @@ namespace GeeWiz
 
         private void CrearVisualAkuAkuSiFalta()
         {
-            if (mascaraAkuObj != null) return;
+            if (mascaraAkuObj != null)
+            {
+                return;
+            }
 
             if (prefabMascaraAku != null)
             {
@@ -463,7 +467,10 @@ namespace GeeWiz
                 Renderer rOjo = ojo.GetComponent<Renderer>();
                 if (rOjo != null)
                 {
-                    if (rOjo.material.HasProperty("_BaseColor")) rOjo.material.SetColor("_BaseColor", colorOjo);
+                    if (rOjo.material.HasProperty("_BaseColor"))
+                    {
+                        rOjo.material.SetColor("_BaseColor", colorOjo);
+                    }
                     rOjo.material.color = colorOjo;
                 }
             }
@@ -480,7 +487,10 @@ namespace GeeWiz
                 Renderer rPluma = pluma.GetComponent<Renderer>();
                 if (rPluma != null)
                 {
-                    if (rPluma.material.HasProperty("_BaseColor")) rPluma.material.SetColor("_BaseColor", coloresPluma[i]);
+                    if (rPluma.material.HasProperty("_BaseColor"))
+                    {
+                        rPluma.material.SetColor("_BaseColor", coloresPluma[i]);
+                    }
                     rPluma.material.color = coloresPluma[i];
                 }
             }
@@ -488,29 +498,43 @@ namespace GeeWiz
 
         private void ActualizarAparienciaAkuAku()
         {
-            if (mascaraAkuObj == null) return;
+            if (mascaraAkuObj == null)
+            {
+                return;
+            }
             mascaraAkuObj.SetActive(nivelAkuAku > 0);
 
             if (materialesModeloAku != null)
             {
-                //El modelo conserva su textura y solo brilla desde el nivel 2
                 float brillo = nivelAkuAku >= 3 ? 1.2f : (nivelAkuAku == 2 ? 0.35f : 0f);
                 foreach (Material mat in materialesModeloAku)
                 {
-                    if (brillo > 0f) mat.EnableKeyword("_EMISSION");
-                    else mat.DisableKeyword("_EMISSION");
+                    if (brillo > 0f)
+                    {
+                        mat.EnableKeyword("_EMISSION");
+                    }
+                    else
+                    {
+                        mat.DisableKeyword("_EMISSION");
+                    }
                     mat.SetColor("_EmissionColor", new Color(1f, 0.82f, 0.18f) * brillo);
                 }
                 return;
             }
 
-            if (materialCuerpoMascara == null || nivelAkuAku <= 0) return;
+            if (materialCuerpoMascara == null || nivelAkuAku <= 0)
+            {
+                return;
+            }
 
             Color colorMascara = nivelAkuAku == 1
                 ? new Color(0.55f, 0.32f, 0.14f)
                 : new Color(1f, 0.78f, 0.15f);
 
-            if (materialCuerpoMascara.HasProperty("_BaseColor")) materialCuerpoMascara.SetColor("_BaseColor", colorMascara);
+            if (materialCuerpoMascara.HasProperty("_BaseColor"))
+            {
+                materialCuerpoMascara.SetColor("_BaseColor", colorMascara);
+            }
             materialCuerpoMascara.color = colorMascara;
 
             if (nivelAkuAku >= 2)
@@ -534,14 +558,20 @@ namespace GeeWiz
 
         private void ActualizarVisualAkuAku()
         {
-            if (mascaraAkuObj == null) return;
+            if (mascaraAkuObj == null)
+            {
+                return;
+            }
             if (nivelAkuAku <= 0)
             {
                 mascaraAkuObj.SetActive(false);
                 return;
             }
 
-            if (!mascaraAkuObj.activeSelf) mascaraAkuObj.SetActive(true);
+            if (!mascaraAkuObj.activeSelf)
+            {
+                mascaraAkuObj.SetActive(true);
+            }
             mascaraAkuObj.transform.localPosition = new Vector3(
                 0.62f + Mathf.Cos(Time.time * 2.4f) * 0.12f,
                 1.35f + Mathf.Sin(Time.time * 3.5f) * 0.14f,
@@ -554,9 +584,22 @@ namespace GeeWiz
 
         public void RecibirDano()
         {
-            if (EstaInvencibleAku3) return;
-            if (Time.time < finInvulnerabilidad) return;
-            if (GestorJuego.Instancia != null && GestorJuego.Instancia.juegoTerminado) return;
+            if (EstaInvencibleAku3)
+            {
+                return;
+            }
+            if (Time.time < finInvulnerabilidad)
+            {
+                return;
+            }
+            if (SistemaVidas.instancia != null && SistemaVidas.instancia.SinVidas)
+            {
+                return;
+            }
+            if (GestorJuego.Instancia != null && GestorJuego.Instancia.juegoTerminado)
+            {
+                return;
+            }
 
             if (!enZonaBonus && nivelAkuAku > 0)
             {
@@ -582,22 +625,22 @@ namespace GeeWiz
             }
 
             DispararTriggerAnimator("Morir");
+            SistemaVidas.instancia?.DescontarVida();
+            GestorJuego.Instancia?.RestarVida();
 
-            if (GestorJuego.Instancia != null)
+            bool sinVidas = (SistemaVidas.instancia != null && SistemaVidas.instancia.SinVidas)
+                            || (GestorJuego.Instancia != null && GestorJuego.Instancia.juegoTerminado);
+
+            if (sinVidas)
             {
-                GestorJuego.Instancia.RestarVida();
-                if (GestorJuego.Instancia.juegoTerminado)
+                if (animator != null)
                 {
-                    if (animator != null) animator.updateMode = AnimatorUpdateMode.UnscaledTime;
-                }
-                else
-                {
-                    Teletransportar(puntoInicio);
+                    animator.updateMode = AnimatorUpdateMode.UnscaledTime;
                 }
             }
             else
             {
-                Reaparecer();
+                Teletransportar(puntoInicio);
             }
         }
 
@@ -608,7 +651,6 @@ namespace GeeWiz
             EncenderEstelas(false);
             RestaurarGravedad();
 
-            //Con el CharacterController activo no se puede cambiar la posicion a mano
             controller.enabled = false;
             transform.position = destino;
             controller.enabled = true;
@@ -627,7 +669,10 @@ namespace GeeWiz
             float velVertical = Vector3.Dot(veloJugador, -direccionGravedad.normalized);
 
             Caja caja = hit.collider.GetComponent<Caja>() ?? hit.collider.GetComponentInParent<Caja>();
-            if (caja != null && caja.esContornoFantasma) return;
+            if (caja != null && caja.esContornoFantasma)
+            {
+                return;
+            }
 
             if (caja != null && caja.tipo == Caja.TipoCaja.Nitro)
             {
@@ -665,8 +710,10 @@ namespace GeeWiz
 
             if (caja != null && hit.normal.y < -0.5f && velVertical > 0.1f)
             {
-                //Frenamos la subida cuando choca con una caja por debajo
-                if (veloJugador.y > 0f) veloJugador.y = -1.5f;
+                if (veloJugador.y > 0f)
+                {
+                    veloJugador.y = -1.5f;
+                }
 
                 if (caja.tipo == Caja.TipoCaja.MetalicaRebote)
                 {
@@ -676,7 +723,10 @@ namespace GeeWiz
 
                 if (caja.tipo == Caja.TipoCaja.InterruptorNitro || caja.tipo == Caja.TipoCaja.InterruptorMetal)
                 {
-                    if (!caja.YaActivada) caja.Golpear();
+                    if (!caja.YaActivada)
+                    {
+                        caja.Golpear();
+                    }
                     return;
                 }
 
@@ -692,7 +742,10 @@ namespace GeeWiz
             }
 
             IGolpeable golpeable = hit.collider.GetComponent<IGolpeable>() ?? hit.collider.GetComponentInParent<IGolpeable>();
-            if (golpeable == null) return;
+            if (golpeable == null)
+            {
+                return;
+            }
 
             if (velVertical <= 0.1f && hit.normal.y > 0.5f)
             {
@@ -709,7 +762,10 @@ namespace GeeWiz
         private void CachearParametrosAnimator()
         {
             parametrosAnimator.Clear();
-            if (animator == null || animator.runtimeAnimatorController == null) return;
+            if (animator == null || animator.runtimeAnimatorController == null)
+            {
+                return;
+            }
 
             foreach (AnimatorControllerParameter param in animator.parameters)
             {
@@ -719,7 +775,10 @@ namespace GeeWiz
 
         private void ActualizarAnimaciones(float velocidadNormalizada, bool corriendo)
         {
-            if (animator == null) return;
+            if (animator == null)
+            {
+                return;
+            }
 
             if (parametrosAnimator.Contains("Velocidad"))
             {
@@ -748,7 +807,6 @@ namespace GeeWiz
             }
         }
 
-
         private void ActualizarPoseModelo()
         {
             bool tumbado = haciendoPlanchazo || Time.time < finAplastado;
@@ -757,7 +815,6 @@ namespace GeeWiz
             float desvio = 0f;
             if (haciendoPlanchazo)
             {
-                //Resorte amortiguado: se echa hacia atras, se pasa de boca abajo y se sacude hasta quedar plano
                 float t = Time.time - inicioPlanchazo;
                 float amortiguado = Mathf.Exp(-7f * t);
                 anguloPose = 90f - 115f * amortiguado * Mathf.Cos(22f * t);
@@ -766,12 +823,10 @@ namespace GeeWiz
             }
             else if (progreso < 1f)
             {
-                //Voltereta hacia adelante en el doble salto
                 anguloPose = Mathf.SmoothStep(0f, 360f, progreso);
             }
             else
             {
-                //MoveTowardsAngle termina la vuelta hacia adelante en vez de devolverse
                 anguloPose = Mathf.MoveTowardsAngle(anguloPose, tumbado ? 90f : 0f, 720f * Time.deltaTime);
             }
 
@@ -779,12 +834,10 @@ namespace GeeWiz
 
             if (haciendoPlanchazo)
             {
-                //Se estira en la caida como en las caricaturas
                 Vector3 estirado = Vector3.Scale(escalaBaseModelo, new Vector3(0.8f, 0.85f, 1.45f));
                 animator.transform.localScale = Vector3.Lerp(animator.transform.localScale, estirado, 15f * Time.deltaTime);
             }
 
-            //Gira alrededor del centro del cuerpo y no de los pies
             Vector3 centro = Vector3.up * 0.8f;
             Quaternion giro = Quaternion.Euler(0f, AnguloGiro + desvio, 0f) * Quaternion.Euler(anguloPose, 0f, ladeo);
             animator.transform.localRotation = giro;
@@ -794,12 +847,20 @@ namespace GeeWiz
 
         private void EncenderEstelas(bool encender)
         {
-            if (estelasPlanchazo == null) return;
+            if (estelasPlanchazo == null)
+            {
+                return;
+            }
             foreach (TrailRenderer estela in estelasPlanchazo)
             {
-                if (estela == null) continue;
-                //Se limpia al encender para que no quede una raya desde la caida anterior
-                if (encender && !estela.emitting) estela.Clear();
+                if (estela == null)
+                {
+                    continue;
+                }
+                if (encender && !estela.emitting)
+                {
+                    estela.Clear();
+                }
                 estela.emitting = encender;
             }
         }

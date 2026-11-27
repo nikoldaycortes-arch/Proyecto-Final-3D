@@ -464,6 +464,7 @@ namespace GeeWiz
             }
 
             GestorJuego.Instancia?.NotificarCajaRota(this);
+            ContadorCajas.instancia?.SumarCaja();
             Destroy(gameObject);
         }
     }
