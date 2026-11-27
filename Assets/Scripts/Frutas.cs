@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class Fruta : MonoBehaviour
@@ -8,22 +9,45 @@ public class Fruta : MonoBehaviour
     public int valor = 1;
 
     private static int totalFrutas = 0;
+    private static bool escenaSuscrita = false;
 
-    void Start()
+    private void Awake()
+    {
+        if (!escenaSuscrita)
+        {
+            SceneManager.sceneLoaded += ReiniciarContador;
+            escenaSuscrita = true;
+        }
+    }
+
+    private static void ReiniciarContador(Scene escena, LoadSceneMode modo)
     {
         totalFrutas = 0;
+    }
+
+    private void Start()
+    {
+        if (textoContador == null)
+        {
+            GameObject objContador = GameObject.Find("ContadorWumpa");
+            if (objContador != null)
+            {
+                textoContador = objContador.GetComponentInChildren<TMP_Text>();
+            }
+        }
+
         if (textoContador != null)
         {
             textoContador.text = totalFrutas.ToString();
         }
     }
 
-    void Update()
+    private void Update()
     {
         transform.Rotate(Vector3.up, velocidadGiro * Time.deltaTime);
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {

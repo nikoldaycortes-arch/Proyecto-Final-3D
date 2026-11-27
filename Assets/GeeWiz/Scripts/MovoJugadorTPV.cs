@@ -177,14 +177,8 @@ namespace GeeWiz
         {
             Vector3 dirArriba = -direccionGravedad.normalized;
 
-            if (checkPiso != null)
-            {
-                enPiso = Physics.CheckSphere(checkPiso.position, distanciaPiso, piso);
-            }
-            else
-            {
-                enPiso = controller.isGrounded;
-            }
+            bool pisoPorEsfera = checkPiso != null && Physics.CheckSphere(checkPiso.position, distanciaPiso, piso);
+            enPiso = controller.isGrounded || pisoPorEsfera;
 
             if (enPiso)
             {
@@ -333,10 +327,16 @@ namespace GeeWiz
             GestorJuego.Instancia?.ReproducirSFX("wumpa");
         }
 
-        private void EjecutarImpactoPlanchazo()
+        private void EjecutarImpactoPlanchazo(IGolpeable impactoDirecto = null)
         {
             Collider[] impactos = Physics.OverlapSphere(transform.position, radioPlanchazo);
             HashSet<IGolpeable> golpeados = new HashSet<IGolpeable>();
+
+            if (impactoDirecto != null)
+            {
+                golpeados.Add(impactoDirecto);
+                impactoDirecto.Golpear();
+            }
 
             foreach (Collider col in impactos)
             {
@@ -747,9 +747,16 @@ namespace GeeWiz
                 return;
             }
 
-            if (velVertical <= 0.1f && hit.normal.y > 0.5f)
+            if (haciendoPlanchazo || (velVertical <= 0.1f && hit.normal.y > 0.5f))
             {
-                golpeable.Golpear();
+                if (haciendoPlanchazo)
+                {
+                    EjecutarImpactoPlanchazo(golpeable);
+                }
+                else
+                {
+                    golpeable.Golpear();
+                }
                 Impulsar(rebote);
             }
         }

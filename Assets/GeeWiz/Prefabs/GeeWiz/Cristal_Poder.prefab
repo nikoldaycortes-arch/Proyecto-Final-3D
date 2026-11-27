@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7804852343821283241}
   - component: {fileID: 7131934747548138549}
-  - component: {fileID: 3125214206536496614}
   m_Layer: 0
   m_Name: Cristal_Poder
   m_TagString: Untagged
@@ -56,25 +55,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.95
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3125214206536496614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5278153729571414063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95ed7709aba7bf91212cb133cd0efc13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FrutaWumpa
-  esRelojTimeTrial: 0
-  esGema: 0
-  esCristal: 1
-  valorWumpa: 0
-  velocidadRotacion: 90
-  radioIman: 1.6
-  vfxRecoger: {fileID: 9157105887711914197, guid: 7059f390c67e2ee1d0dc60b3f5570b8b, type: 3}
 --- !u!1 &7821857654725113128
 GameObject:
   m_ObjectHideFlags: 0
